@@ -24,7 +24,7 @@ print(temperature)
 
 
 logname = datetime.datetime.fromtimestamp(ts).strftime("%Y%m%d") + ".csv"
-while True :
+#while True :
   
   
     
