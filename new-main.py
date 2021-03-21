@@ -1,15 +1,14 @@
 import csv
-from datetime import datetime
+#from datetime import datetime
 import serial
 import time
-#import datetime
+import datetime
 
 comport = 'COM7'
 baud    = 9600
 
 openserial = serial.Serial(comport, baud)
-#ts = time.time()
-#waktu = datetime.datetime.fromtimestamp(ts).strftime("%H%M")
+
 
 
 class logger :
@@ -23,9 +22,12 @@ class logger :
         self.temp = ds[1]
 
     def collect_data(self):
+        ts = time.time()
+        self.waktu = datetime.datetime.fromtimestamp(ts).strftime("%Y%m%d")
+        self.jam = datetime.datetime.fromtimestamp(ts).strftime("%H%M")
         temprature = str(self.temp)
         humidity = str(self.hm)
-        self.data_dict['Data Suhu'] = (datetime.now(), humidity, temprature)
+        self.data_dict[self.waktu] = (self.jam , humidity , temprature)
 
     def print_data(self):
 
@@ -48,7 +50,7 @@ def main():
         Logger.collect_data()
         Logger.logging_data()
         Logger.print_data()
-        time.sleep(5)
+        time.sleep(1800)
 main()
 
 
