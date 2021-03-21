@@ -1,15 +1,11 @@
 import csv
-#from datetime import datetime
 import serial
 import time
 import datetime
 
 comport = 'COM7'
 baud    = 9600
-
 openserial = serial.Serial(comport, baud)
-
-
 
 class logger :
     def __init__(self):
@@ -50,7 +46,7 @@ def main():
         Logger.collect_data()
         Logger.logging_data()
         Logger.print_data()
-        time.sleep(1800)
+        time.sleep(120)
 main()
 
 
